@@ -10,8 +10,8 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 # Install the necessary packages
-yum install -y tree wget curl git unzip httpd 
-
+yum install -y tree wget curl git unzip httpd vim dos2unix
+dos2unix /home/ec2-user/prepare.sh
 
 # Create the necessary directories
 mkdir -p /opt/okd/
