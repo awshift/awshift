@@ -82,15 +82,19 @@ ls -al /opt/okd/manifests_bak && sudo cp -r /opt/okd/install_dir/* /opt/okd/mani
 cp /opt/okd/install_dir/* /var/www/html/
 
 # Generate CheckSums
-cd /var/www/html/ 
+# cd /var/www/html/ 
 # for each file .ign make a checksum [bootstrap,master,worker]
-for file in bootstrap.ign master.ign worker.ign; do
-    if [ -f "$file" ]; then
-        sha512sum "$file" > "$file.sha512"
-    else
-        echo "$file not found!"
-    fi
-done
+# for file in "bootstrap.ign master.ign worker.ign"; 
+# do
+#     if [ -f "$file" ]; then
+#         sha512sum "$file" > "$file.sha512"
+#     else
+#         echo "$file not found!"
+#     fi
+# done
+sha512sum /var/www/html/bootstrap.ign > "bootstrap.sha512"
+sha512sum /var/www/html/master.ign > "master.sha512"
+sha512sum /var/www/html/worker.ign > "worker.sha512"
 
 # rm index.html /var/www/html/index.html
 rm -rf /var/www/html/index.html
